@@ -15,7 +15,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      gap: 1.5rem;
+      gap: 0.8rem;
     }
     h1 {
       font-size: 2rem;
@@ -23,14 +23,17 @@
     }
     a.button {
       display: inline-block;
-      padding: 12px 24px;
+      width: 200px; /* Fixed width */
+      height: 50px; /* Fixed height */
       background-color: #111;
       border: 2px solid #555;
       color: #fff;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 12px;
       transition: 0.2s;
-      font-size: 1.2rem;
+      font-size: 1rem; /* Adjusted font size for better fit */
+      text-align: left;
+      line-height: 50px; /* Center text vertically */
     }
     a.button:hover {
       background-color: #222;
@@ -44,16 +47,165 @@
       opacity: 0.5;
       text-align: center;
     }
+
+    .card {
+      --dark: #111;
+      --darker: #555;
+      --semidark: #222;
+      --lightgray: #e8e8e8;
+      --unit: 10px;
+
+      background-color: var(--dark);
+      box-shadow: 0 0 var(--unit) var(--dark);
+      border: 2px solid var(--darker);
+      border-radius: 12px;
+      position: relative;
+      padding: var(--unit);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 120%;
+      height: 20%;
+      top: 40%;
+      left: -10%;
+      background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+      animation: keyframes-floating-light 2.5s infinite ease-in-out;
+      filter: blur(20px);
+    }
+
+    @keyframes keyframes-floating-light {
+      0% {
+      transform: rotate(-5deg) translateY(-5%);
+      opacity: 0.5;
+      }
+
+      50% {
+      transform: rotate(5deg) translateY(5%);
+      opacity: 1;
+      }
+
+      100% {
+      transform: rotate(-5deg) translateY(-5%);
+      opacity: 0.5;
+      }
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0%;
+      left: 0%;
+      background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+      filter: blur(20px);
+      pointer-events: none;
+      animation: keyframes-intro 1s ease-in forwards;
+    }
+
+    @keyframes keyframes-intro {
+      100% {
+      transform: translate(-100%);
+      opacity: 0;
+      }
+    }
+
+    .card .image {
+      width: 200px;
+      animation: keyframes-floating-img 10s ease-in-out infinite;
+    }
+
+    @keyframes keyframes-floating-img {
+      0% {
+      transform: translate(-2%, 2%) scaleY(0.95) rotate(-5deg);
+      }
+
+      50% {
+      transform: translate(2%, -2%) scaleY(1) rotate(5deg);
+      }
+
+      100% {
+      transform: translate(-2%, 2%) scaleY(0.95) rotate(-5deg);
+      }
+    }
+
+    .card .heading {
+      font-weight: 600;
+      font-size: small;
+      text-align: center;
+      margin-top: calc(var(--unit) * -2);
+      padding-block: var(--unit);
+      color: var(--lightgray);
+      animation: keyframes-flash-text 0.5s infinite;
+    }
+
+    @keyframes keyframes-flash-text {
+      50% {
+      opacity: 0.5;
+      }
+    }
+
+    .card .icons {
+      display: flex;
+      gap: var(--unit);
+    }
+
+    .card .icons a {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--dark);
+      color: var(--lightgray);
+      padding: calc(var(--unit) / 2);
+      border: 2px solid var(--darker);
+      border-radius: 12px;
+      transition: 0.2s;
+    }
+
+    .card .icons a:hover {
+      background-color: var(--semidark);
+      border-color: #888;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
-  <h1>🔗 My Links</h1>
+  <div class="card" style="width: 100%; max-width: 400px; height: 200px; display: flex; justify-content: center; align-items: center;">
+    <img
+      class="image"
+      alt=""
+      src="https://uiverse.io/astronaut.png"
+    />
+  </div>
+    <h1>🔗 DELFANASA</h1>
 
-  <a class="button" href="https://saweria.co/dlfanx" target="_blank">💸 Saweria</a>
-  <a class="button" href="https://tiktok.com/@dlfanx" target="_blank">🎵 TikTok</a>
-  <a class="button" href="https://github.com/dlfanx" target="_blank">💻 GitHub</a>
-  <a class="button" href="https://youtube.com/@dlfanx" target="_blank">▶ Youtube</a>
 
-  <div class="meme">no mora left in my pocket 💀</div>
+  <a class="button" href="#" target="_blank">
+    <img src="drawable/icons8-discord-square.svg" alt="Discord Icon" style="height: 3.2em; vertical-align: middle;" /> Discord Server
+  </a>
+  <a class="button" href="https://saweria.co/dlfanx" target="_blank">
+    <img src="drawable/icons8-cash-app.svg" alt="Saweria Icon" style="height: 3.2em; vertical-align: middle;" /> Saweria
+  </a>
+  <a class="button" href="https://tiktok.com/@dlfanx" target="_blank">
+    <img src="drawable/icons8-tiktok.svg" alt="TikTok Icon" style="height: 3.2em; vertical-align: middle;" /> TikTok
+  </a>
+  <a class="button" href="https://github.com/dlfanx" target="_blank">
+    <img src="drawable/icons8-github.svg" alt="GitHub Icon" style="height: 3.2em; vertical-align: middle;" /> GitHub
+  </a>
+  <a class="button" href="https://youtube.com/@dlfanx" target="_blank">
+    <img src="drawable/icons8-youtube.svg" alt="YouTube Icon" style="height: 3.2em; vertical-align: middle;" /> YouTube
+  </a>
+
+  <div style="width: 100%; max-width: 400px; height: 200px; display: flex; justify-content: center; align-items: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6zG5U3wCnQfYKrMSWWmbD2?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div></div>
+  <div class="meme">
+    <img src="drawable/paimon.png" alt="Paimon by Hoyoverse" style="height: 2em; vertical-align: middle;" />
+    no mora left in my pocket 💀
+  </div>
 </body>
 </html>
